@@ -1,8 +1,16 @@
+import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
+import MainPage from './pages/MainPage';
 
 function App() {
+
   return (
-    <div></div>
+      <div>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+        </Routes>
+      </div>
   );
 }
 
