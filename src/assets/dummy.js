@@ -46,5 +46,89 @@ export const productsData = [
     "image_url": null,
     "brand_image_url": "ramdomimage/4",
     "follower": 2143
-  }
+  },
+  {
+    "id": 4,
+    "type": "Category",
+    "title": "cat",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "ramdomimage/2",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 5,
+    "type": "Exhibition",
+    "title": "한 권의 휴식",
+    "sub_title": "현대인 필독서 모음",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "ramdomimage/3",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 6,
+    "type": "Brand",
+    "title": null,
+    "sub_title": null,
+    "brand_name": "yaho",
+    "price": null,
+    "discountPercentage": null,
+    "image_url": null,
+    "brand_image_url": "ramdomimage/4",
+    "follower": 50000
+  },
+  {
+    "id": 7,
+    "type": "Exhibition",
+    "title": "한 권의 휴식",
+    "sub_title": "현대인 필독서 모음",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "ramdomimage/3",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 8,
+    "type": "Brand",
+    "title": null,
+    "sub_title": null,
+    "brand_name": "yaho",
+    "price": null,
+    "discountPercentage": null,
+    "image_url": null,
+    "brand_image_url": "ramdomimage/4",
+    "follower": 50000
+  },
+  {
+    "id": 9,
+    "type": "Exhibition",
+    "title": "나에게 딱맞는 키보드",
+    "sub_title": "기계식 키보드 입문부터 전문가까지",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "ramdomimage/3",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 10,
+    "type": "Brand",
+    "title": null,
+    "sub_title": null,
+    "brand_name": "뉴발란스",
+    "price": null,
+    "discountPercentage": null,
+    "image_url": null,
+    "brand_image_url": "ramdomimage/4",
+    "follower": 109000
+  },
 ];
