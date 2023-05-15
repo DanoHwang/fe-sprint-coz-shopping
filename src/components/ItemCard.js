@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from 'styled-components';
 
 import blankStarImg from '../assets/blank-star.svg';
@@ -24,7 +24,6 @@ const ImgWrapper = styled.div`
 `;
 
 const ProductImage = styled.img`
-
   width: 100%;
   height: 100%;
   margin-bottom: 6px;
@@ -38,10 +37,6 @@ const Title = styled.h2`
   color: ${props => props.type === itemCardTypes.product ? '#452CDD' : '#000'};
 `;
 
-const Text = styled.p`
-  font-size: 16px;
-`;
-
 const Star = styled.img.attrs(props => ({
   src: `${props.selected ? yellowStarImg : blankStarImg}`,
   alt: ''
@@ -51,16 +46,31 @@ const Star = styled.img.attrs(props => ({
   right: 12px;
   bottom: 12px;
   position: absolute;
+  cursor: pointer;
 `;
 
-export default function ItemCard ({ data }) {
+export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const { product, exhibition, brand } = itemCardTypes;
+  const isBookmarked = bookmarks.filter((id) => id === data.id).length > 0 ? true : false;
+
+  useEffect(() => {
+    const newBookmarks = JSON.stringify([...bookmarks]);
+    window.localStorage.setItem('bookmarks', newBookmarks);
+  }, [bookmarks]);
+
+  const handleBookmark = () => {
+    const updatedBookmarks = isBookmarked
+      ? [...bookmarks].filter((id) => id !== data.id)
+      : [...bookmarks, data.id];
+
+    setBookmarks(updatedBookmarks);
+  };
 
   return (
     <Container>
       <ImgWrapper>
       <ProductImage src={data['image_url']} />
-        <Star selected={true} />
+        <Star selected={isBookmarked ? true : false} onClick={handleBookmark} />
       </ImgWrapper>
       <Wrapper>
         {data.type === brand
@@ -71,19 +81,13 @@ export default function ItemCard ({ data }) {
         {data.type === brand && <Title>관심고객수</Title>}
       </Wrapper>
       {data.type === product && (
-        <Wrapper justify-content={'end'}>
-          <Text>{data.price}</Text>
-        </Wrapper>
+        <Wrapper justify-content={'end'}>{data.price}원</Wrapper>
       )}
       {data.type === exhibition && (
-        <Wrapper justify-content={'start'}>
-          <Text>{data['sub_title']}</Text>
-        </Wrapper>
+        <Wrapper justify-content={'start'}>{data['sub_title']}</Wrapper>
       )}
       {data.type === brand && (
-        <Wrapper justify-content={'end'}>
-          <Text>{data.follower}</Text>
-        </Wrapper>
+        <Wrapper justify-content={'end'}>{data.follower}</Wrapper>
       )}
     </Container>
   );
