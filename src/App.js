@@ -12,13 +12,13 @@ function App() {
   );
 
   return (
-    <div>
+    <>
       <Header />
       <Routes>
         <Route path='/' element={<MainPage bookmarks={bookmarks} setBookmarks={setBookmarks} />} />
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -37,10 +37,6 @@ const Title = styled.h2`
   color: ${props => props.type === itemCardTypes.product ? '#452CDD' : '#000'};
 `;
 
-const Text = styled.p`
-  font-size: 16px;
-`;
-
 const Star = styled.img.attrs(props => ({
   src: `${props.selected ? yellowStarImg : blankStarImg}`,
   alt: ''
@@ -85,19 +81,13 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
         {data.type === brand && <Title>관심고객수</Title>}
       </Wrapper>
       {data.type === product && (
-        <Wrapper justify-content={'end'}>
-          <Text>{data.price}원</Text>
-        </Wrapper>
+        <Wrapper justify-content={'end'}>{data.price}원</Wrapper>
       )}
       {data.type === exhibition && (
-        <Wrapper justify-content={'start'}>
-          <Text>{data['sub_title']}</Text>
-        </Wrapper>
+        <Wrapper justify-content={'start'}>{data['sub_title']}</Wrapper>
       )}
       {data.type === brand && (
-        <Wrapper justify-content={'end'}>
-          <Text>{data.follower}</Text>
-        </Wrapper>
+        <Wrapper justify-content={'end'}>{data.follower}</Wrapper>
       )}
     </Container>
   );
