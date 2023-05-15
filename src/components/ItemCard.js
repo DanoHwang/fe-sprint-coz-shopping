@@ -1,8 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-import blankStarImg from "../assets/blank-star.svg";
-import yellowStarImg from "../assets/yellow-star.svg";
+import blankStarImg from '../assets/blank-star.svg';
+import yellowStarImg from '../assets/yellow-star.svg';
 import { itemCardTypes } from '../constants/itemCardTypes';
 
 const Container = styled.div`
@@ -53,7 +53,7 @@ const Star = styled.img.attrs(props => ({
   position: absolute;
 `;
 
-function ItemCard ({ data }) {
+export default function ItemCard ({ data }) {
   const { product, exhibition, brand } = itemCardTypes;
 
   return (
@@ -88,5 +88,3 @@ function ItemCard ({ data }) {
     </Container>
   );
 }
-
-export default ItemCard;
