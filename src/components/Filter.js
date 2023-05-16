@@ -13,10 +13,13 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Filter ({ image, type }) {
+export default function Filter ({ image, type, setCheckedFilter }) {
+  const handleClick = () => {
+    setCheckedFilter(type);
+  };
 
   return (
-    <Wrapper>
+    <Wrapper onClick={handleClick}>
       <img src={image} alt='' />
       <h2>{type}</h2>
     </Wrapper>

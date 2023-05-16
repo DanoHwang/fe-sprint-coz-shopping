@@ -26,12 +26,17 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-export default function FilterList () {
+export default function FilterList ({ setCheckedFilter }) {
 
   return (
     <Wrapper>
       {filters.map(({ type, image }) => (
-        <Filter type={type} image={image} key={type} />
+        <Filter
+          type={type}
+          image={image}
+          setCheckedFilter={setCheckedFilter}
+          key={type}
+        />
       ))}
     </Wrapper>
   );
