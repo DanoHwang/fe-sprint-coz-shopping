@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-export default function FilterList ({ setCheckedFilter }) {
+export default function FilterList ({ setCheckedFilter, isChecked = true }) {
 
   return (
     <Wrapper>
@@ -35,6 +35,7 @@ export default function FilterList ({ setCheckedFilter }) {
           type={type}
           image={image}
           setCheckedFilter={setCheckedFilter}
+          isChecked={isChecked}
           key={type}
         />
       ))}
