@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
 import ItemCardList from '../components/ItemCardList';
@@ -9,7 +9,10 @@ const Title = styled.h1`
   font-weight: 600;
 `;
 
-export default function MainPage ({ bookmarks, setBookmarks }) {
+export default function MainPage () {
+  const [ bookmarks, setBookmarks ] = useState(
+    new Map(JSON.parse(window.localStorage.getItem('bookmarks'))) || new Map()
+  );
 
   return (
     <main>
