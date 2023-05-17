@@ -1,5 +1,4 @@
 import React from 'react';
-import { styled } from 'styled-components';
 
 import allImg from '../assets/filter-all.svg';
 import productImg from '../assets/filter-product.svg';
@@ -10,6 +9,7 @@ import brandImg from '../assets/filter-brand.svg';
 import Filter from './Filter';
 import { filterTypes } from '../constants/filterTypes';
 import { itemCardTypes } from '../constants/itemCardTypes';
+import * as S from '../styles/FilterListStyle';
 
 const filters = [
   { name: filterTypes.all, image: allImg, type: itemCardTypes.all },
@@ -19,18 +19,10 @@ const filters = [
   { name: filterTypes.brand, image: brandImg, type: itemCardTypes.brand }
 ];
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 554px;
-  height: 122px;
-  text-align: center;
-`;
-
 export default function FilterList ({ setCheckedFilter, checkedFilter }) {
 
   return (
-    <Wrapper>
+    <S.Wrapper>
       {filters.map(({ type, name, image }) => (
         <Filter
           type={type}
@@ -41,6 +33,6 @@ export default function FilterList ({ setCheckedFilter, checkedFilter }) {
           key={type}
         />
       ))}
-    </Wrapper>
+    </S.Wrapper>
   );
 }

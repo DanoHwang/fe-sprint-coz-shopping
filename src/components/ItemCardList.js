@@ -1,21 +1,12 @@
 import React from 'react';
-import { styled } from 'styled-components';
 
 import { productsData } from '../assets/dummy';
 import { itemCardTypes } from '../constants/itemCardTypes';
+import * as S from '../styles/FilterListStyle';
 
 import ItemCard from '../components/ItemCard';
 
 const { all, bookmark } = itemCardTypes;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 12px 0;
-`;
 
 export default function ItemCardList ({ count, bookmarks, setBookmarks, searchType = all }) {
   const searchData = (type) => {
@@ -37,7 +28,7 @@ export default function ItemCardList ({ count, bookmarks, setBookmarks, searchTy
   const filteredData = searchData(searchType);
 
   return (
-    <Wrapper>
+    <S.Wrapper>
       {filteredData.slice(0, count).map((data) => (
         <ItemCard
           data={data}
@@ -46,6 +37,6 @@ export default function ItemCardList ({ count, bookmarks, setBookmarks, searchTy
           setBookmarks={setBookmarks}
         />
       ))}
-    </Wrapper>
+    </S.Wrapper>
   );
 }

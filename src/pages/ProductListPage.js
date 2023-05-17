@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { styled } from 'styled-components';
+
+import { itemCardTypes } from '../constants/itemCardTypes';
+import * as S from '../styles/FooterStyle';
 
 import FilterList from '../components/FilterList';
 import ItemCardList from '../components/ItemCardList';
-import { itemCardTypes } from '../constants/itemCardTypes';
-
-const Wrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default function ProductListPage () {
   const [ checkedFilter, setCheckedFilter ] = useState(itemCardTypes.all);
@@ -21,7 +15,7 @@ export default function ProductListPage () {
   );
 
   return (
-    <Wrapper>
+    <S.Wrapper>
       <FilterList setCheckedFilter={setCheckedFilter} checkedFilter={checkedFilter} />
       <ItemCardList
         count={10}
@@ -29,6 +23,6 @@ export default function ProductListPage () {
         setBookmarks={setBookmarks}
         searchType={checkedFilter}
       />
-    </Wrapper>
+    </S.Wrapper>
   )
 }

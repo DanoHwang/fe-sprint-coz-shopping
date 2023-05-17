@@ -1,58 +1,8 @@
 import React from 'react';
-import { styled } from 'styled-components';
 
-import blankStarImg from '../assets/blank-star.svg';
-import yellowStarImg from '../assets/yellow-star.svg';
 import { itemCardTypes } from '../constants/itemCardTypes';
 import { updateLocalStorage } from '../utils/updateLocalStorage';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 264px;
-  height: 264px;
-
-  &:not(:nth-child(4n+0)) {
-    margin-right: 24px;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: ${ props => props['justify-content'] || 'space-between' };
-`;
-
-const ImgWrapper = styled.div`
-  width: 100%;
-  height: 210px;
-  position: relative;
-`;
-
-const ProductImage = styled.img`
-  width: 100%;
-  height: 100%;
-  margin-bottom: 6px;
-  border-radius: 12px;
-`;
-
-const Title = styled.h2`
-  margin: 6px 0;
-  font-weight: 800;
-  font-size: 16px;
-  color: ${props => props.type === itemCardTypes.product ? '#452CDD' : '#000'};
-`;
-
-const Star = styled.img.attrs(props => ({
-  src: `${props.selected ? yellowStarImg : blankStarImg}`,
-  alt: ''
-}))`
-  width: 24px;
-  height: 24px;
-  right: 12px;
-  bottom: 12px;
-  position: absolute;
-  cursor: pointer;
-`;
+import * as S from '../styles/ItemCardStyle';
 
 export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const { product, exhibition, brand } = itemCardTypes;
@@ -66,28 +16,28 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   };
 
   return (
-    <Container>
-      <ImgWrapper>
-        <ProductImage src={data['image_url']} />
-        <Star selected={isBookmarked ? true : false} onClick={handleBookmark} />
-      </ImgWrapper>
-      <Wrapper>
+    <S.Container>
+      <S.ImgWrapper>
+        <S.ProductImage src={data['image_url']} />
+        <S.Star selected={isBookmarked ? true : false} onClick={handleBookmark} />
+      </S.ImgWrapper>
+      <S.Wrapper>
         {data.type === brand
-          ? <Title>{data['brand_name']}</Title>
-          : <Title>{data.title}</Title>
+          ? <S.Title>{data['brand_name']}</S.Title>
+          : <S.Title>{data.title}</S.Title>
         }
-        {data.type === product && <Title type={data.type}>00%</Title>}
-        {data.type === brand && <Title>관심고객수</Title>}
-      </Wrapper>
+        {data.type === product && <S.Title type={data.type}>00%</S.Title>}
+        {data.type === brand && <S.Title>관심고객수</S.Title>}
+      </S.Wrapper>
       {data.type === product && (
-        <Wrapper justify-content={'end'}>{data.price.toLocaleString('ko-KR')}원</Wrapper>
+        <S.Wrapper justify-content={'end'}>{data.price.toLocaleString('ko-KR')}원</S.Wrapper>
       )}
       {data.type === exhibition && (
-        <Wrapper justify-content={'start'}>{data['sub_title']}</Wrapper>
+        <S.Wrapper justify-content={'start'}>{data['sub_title']}</S.Wrapper>
       )}
       {data.type === brand && (
-        <Wrapper justify-content={'end'}>{data.follower.toLocaleString('ko-KR')}</Wrapper>
+        <S.Wrapper justify-content={'end'}>{data.follower.toLocaleString('ko-KR')}</S.Wrapper>
       )}
-    </Container>
+    </S.Container>
   );
 }

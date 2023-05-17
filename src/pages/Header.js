@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import * as S from '../styles/HeaderStyle';
+
 import logoImg from '../assets/logo.svg';
 import menuImg from '../assets/hamburger-button.svg';
 import Dropdown from '../components/Dropdown';
-
-import * as S from '../styles/HeaderStyle';
 
 export default function Header () {
   const [ isMenuOpened, setIsMenuOpened ] = useState(false);
