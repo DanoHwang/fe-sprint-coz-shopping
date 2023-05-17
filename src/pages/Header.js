@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import logoImg from '../assets/logo.svg';
 import menuImg from '../assets/hamburger-button.svg';
+import Dropdown from '../components/Dropdown';
 
 const Head = styled.header`
   display: flex;
@@ -39,51 +40,11 @@ const HamburgerButton = styled.img`
   cursor: pointer;
 `;
 
-const Menu = styled.div`
-  width: 200px;
-  height: 150px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 8px 0px #0000001A;
-  background-color: #FFFF;
-  position: absolute;
-  top: 87px;
-  right: 32px;
-`;
-
-const Triangle = styled.div`
-  width: 25px;
-  height: 25px;
-  background-color: #FFFF;
-  box-shadow: -3px 3px 8px -3px #0000001A;
-  transform: rotate(135deg);
-  position: absolute;
-  top: 75px;
-  right: 80px;
-  z-index: 1;
-`;
-
-const MenuItem = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 50px;
-  border-bottom: 0.5px solid #0000001A;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &:hover:not(:first-child) {
-    cursor: pointer;
-  }
-`;
-
 export default function Header () {
   const [ isMenuOpened, setIsMenuOpened ] = useState(false);
   const navigate = useNavigate();
 
-  const handleMenuClick = () => {
+  const handleMenuOpen = () => {
     setIsMenuOpened(!isMenuOpened);
   };
 
@@ -97,21 +58,8 @@ export default function Header () {
         <LogoImage src={logoImg} />
         <Title>COZ Shopping</Title>
       </LogoWrapper>
-      <HamburgerButton src={menuImg} onClick={handleMenuClick} />
-      {isMenuOpened && (
-        <>
-          <Triangle />
-          <Menu>
-            <MenuItem>OOO님, 안녕하세요!</MenuItem>
-            <MenuItem>
-              <Link to='/products/list' onClick={handleMenuClick}>상품리스트 페이지</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to='/bookmark' onClick={handleMenuClick}>북마크 페이지</Link>
-            </MenuItem>
-          </Menu>
-        </>
-      )}
+      <HamburgerButton src={menuImg} onClick={handleMenuOpen} />
+      {isMenuOpened && <Dropdown handleMenuOpen={handleMenuOpen} />}
     </Head>
   );
 }
