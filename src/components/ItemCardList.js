@@ -22,7 +22,13 @@ export default function ItemCardList ({ count, bookmarks, setBookmarks, searchTy
     if (type === all) return productsData;
 
     if (type === bookmark) {
-      return bookmarks.map((id) => productsData.find((data) => data.id === id));
+      const values = [];
+
+      for (let value of bookmarks.values()) {
+        values.push(value);
+      }
+
+      return values;
     }
 
     return productsData.filter((data) => data.type === searchType);

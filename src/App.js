@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { styled } from 'styled-components';
 
@@ -19,16 +18,13 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const [ bookmarks, setBookmarks ] = useState(
-    JSON.parse(window.localStorage.getItem('bookmarks')) || []
-  );
 
   return (
     <>
       <Header />
       <Wrapper>
         <Routes>
-          <Route path='/' element={<MainPage bookmarks={bookmarks} setBookmarks={setBookmarks} />} />
+          <Route path='/' element={<MainPage />} />
         </Routes>
       </Wrapper>
       <Footer />
