@@ -6,16 +6,17 @@ import productImg from '../assets/filter-product.svg';
 import categoryImg from '../assets/filter-category.svg';
 import exhibitionImg from '../assets/filter-exhibition.svg';
 import brandImg from '../assets/filter-brand.svg';
-import { filterTypes } from '../constants/filterTypes';
 
 import Filter from './Filter';
+import { filterTypes } from '../constants/filterTypes';
+import { itemCardTypes } from '../constants/itemCardTypes';
 
 const filters = [
-  { type: filterTypes.all, image: allImg },
-  { type: filterTypes.product, image: productImg },
-  { type: filterTypes.category, image: categoryImg },
-  { type: filterTypes.exhibition, image: exhibitionImg },
-  { type: filterTypes.brand, image: brandImg }
+  { name: filterTypes.all, image: allImg, type: itemCardTypes.all },
+  { name: filterTypes.product, image: productImg, type: itemCardTypes.product },
+  { name: filterTypes.category, image: categoryImg, type: itemCardTypes.category },
+  { name: filterTypes.exhibition, image: exhibitionImg, type: itemCardTypes.exhibition },
+  { name: filterTypes.brand, image: brandImg, type: itemCardTypes.brand }
 ];
 
 const Wrapper = styled.div`
@@ -26,16 +27,17 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-export default function FilterList ({ setCheckedFilter, isChecked = true }) {
+export default function FilterList ({ setCheckedFilter, checkedFilter }) {
 
   return (
     <Wrapper>
-      {filters.map(({ type, image }) => (
+      {filters.map(({ type, name, image }) => (
         <Filter
           type={type}
+          name={name}
           image={image}
           setCheckedFilter={setCheckedFilter}
-          isChecked={isChecked}
+          checkedFilter={checkedFilter}
           key={type}
         />
       ))}
