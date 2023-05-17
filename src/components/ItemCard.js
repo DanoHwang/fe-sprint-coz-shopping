@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import blankStarImg from '../assets/blank-star.svg';
 import yellowStarImg from '../assets/yellow-star.svg';
 import { itemCardTypes } from '../constants/itemCardTypes';
+import { updateMap } from '../utils/updateMap';
 
 const Container = styled.div`
   display: flex;
@@ -55,19 +56,18 @@ const Star = styled.img.attrs(props => ({
 
 export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const { product, exhibition, brand } = itemCardTypes;
-  const isBookmarked = bookmarks.filter((id) => id === data.id).length > 0 ? true : false;
+  const { addMap, deleteMap } = updateMap;
+  const isBookmarked = bookmarks.has(data.id) ? true : false;
 
   useEffect(() => {
-    const newBookmarks = JSON.stringify([...bookmarks]);
+    const newBookmarks = JSON.stringify(Array.from(bookmarks.entries()));
     window.localStorage.setItem('bookmarks', newBookmarks);
   }, [bookmarks]);
 
   const handleBookmark = () => {
-    const updatedBookmarks = isBookmarked
-      ? [...bookmarks].filter((id) => id !== data.id)
-      : [...bookmarks, data.id];
-
-    setBookmarks(updatedBookmarks);
+    isBookmarked
+    ? deleteMap(setBookmarks, data.id)
+    : addMap(setBookmarks, data.id, data);
   };
 
   return (
