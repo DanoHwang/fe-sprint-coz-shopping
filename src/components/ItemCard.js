@@ -8,8 +8,12 @@ import { itemCardTypes } from '../constants/itemCardTypes';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 260px;
-  height: 210px;
+  width: 264px;
+  height: 264px;
+
+  &:not(:nth-child(4n+0)) {
+    margin-right: 24px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -19,7 +23,7 @@ const Wrapper = styled.div`
 
 const ImgWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 210px;
   position: relative;
 `;
 
@@ -69,7 +73,7 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   return (
     <Container>
       <ImgWrapper>
-      <ProductImage src={data['image_url']} />
+        <ProductImage src={data['image_url']} />
         <Star selected={isBookmarked ? true : false} onClick={handleBookmark} />
       </ImgWrapper>
       <Wrapper>
@@ -81,13 +85,13 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
         {data.type === brand && <Title>관심고객수</Title>}
       </Wrapper>
       {data.type === product && (
-        <Wrapper justify-content={'end'}>{data.price}원</Wrapper>
+        <Wrapper justify-content={'end'}>{data.price.toLocaleString('ko-KR')}원</Wrapper>
       )}
       {data.type === exhibition && (
         <Wrapper justify-content={'start'}>{data['sub_title']}</Wrapper>
       )}
       {data.type === brand && (
-        <Wrapper justify-content={'end'}>{data.follower}</Wrapper>
+        <Wrapper justify-content={'end'}>{data.follower.toLocaleString('ko-KR')}</Wrapper>
       )}
     </Container>
   );
