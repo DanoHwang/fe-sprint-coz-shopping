@@ -2,7 +2,7 @@ import React from 'react';
 
 import { productsData } from '../assets/dummy';
 import { itemCardTypes } from '../constants/itemCardTypes';
-import * as S from '../styles/FilterListStyle';
+import * as S from '../styles/ItemCardListStyle';
 
 import ItemCard from '../components/ItemCard';
 

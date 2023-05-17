@@ -11,8 +11,8 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
 
   const handleBookmark = () => {
     isBookmarked
-    ? deleteBookmark(setBookmarks, data.id, bookmarks)
-    : addBookmark(setBookmarks, data.id, data, bookmarks);
+    ? deleteBookmark(setBookmarks, data.id)
+    : addBookmark(setBookmarks, data.id, data);
   };
 
   return (
