@@ -24,7 +24,7 @@ export default function MainPage () {
         count={4}
         bookmarks={bookmarks}
         setBookmarks={setBookmarks}
-        searchType={itemCardTypes.bookmark}
+        isBookmarkList={true}
       />
     </main>
   );
