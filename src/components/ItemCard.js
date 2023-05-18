@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { itemCardTypes } from '../constants/itemCardTypes';
 import { updateLocalStorage } from '../utils/updateLocalStorage';
 import { getStandardType } from '../utils/getStandardType';
-import XBtn from '../assets/white-x-button.svg';
 import * as S from '../styles/ItemCardStyle';
+
+import Modal from './Modal';
 
 export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,14 +46,14 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
         <S.Wrapper justify-content={'end'}>{follower}</S.Wrapper>
       )}
       {isOpen && (
-        <S.ModalBackdrop onClick={openModalHandler}>
-          <S.ModalView onClick={(event) => event.stopPropagation()}>
-            <S.ModalButton src={XBtn} onClick={() => setIsOpen(false)} />
-            <S.ModalImage src={image} />
-            <S.ModalStar selected={isBookmarked ? true : false} onClick={handleBookmark} />
-            <S.ModalTitle>{title}</S.ModalTitle>
-          </S.ModalView>
-        </S.ModalBackdrop>
+        <Modal
+          openModalHandler={openModalHandler}
+          setIsOpen={setIsOpen}
+          image={image}
+          isBookmarked={isBookmarked}
+          handleBookmark={handleBookmark}
+          title={title}
+        />
       )}
     </S.Container>
   );
