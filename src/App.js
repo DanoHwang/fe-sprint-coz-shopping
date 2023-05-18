@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import Footer from './pages/Footer';
 import Header from './pages/Header';
 import ProductListPage from './pages/ProductListPage';
+import BookmarkPage from './pages/BookmarkPage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/products/list' element={<ProductListPage />} />
+          <Route path='/bookmark' element={<BookmarkPage />} />
         </Routes>
       </Wrapper>
       <Footer />
