@@ -1,4 +1,4 @@
-export const updateLocalStorage = {
+export const manageLocalStorage = {
   addBookmark: (setter, key, value) => {
     setter((prev) => {
       const newState = new Map([...prev, [key, value]]);
@@ -20,5 +20,9 @@ export const updateLocalStorage = {
 
       return newState;
     });
+  },
+
+  getBookmarks: () => {
+    return new Map(JSON.parse(window.localStorage.getItem('bookmarks'))) || new Map()
   }
 };

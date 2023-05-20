@@ -5,12 +5,13 @@ import * as S from '../styles/BookmarkPageStyle';
 
 import FilterList from '../components/FilterList';
 import ItemCardList from '../components/ItemCardList';
+import { manageLocalStorage } from '../utils/manageLocalStorage';
 
 export default function BookmarkPage () {
   const [ checkedFilter, setCheckedFilter ] = useState(itemCardTypes.all);
 
   const [ bookmarks, setBookmarks ] = useState(
-    new Map(JSON.parse(window.localStorage.getItem('bookmarks'))) || new Map()
+    manageLocalStorage.getBookmarks()
   );
 
   return (
