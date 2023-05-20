@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { itemCardTypes } from '../constants/itemCardTypes';
-import { updateLocalStorage } from '../utils/updateLocalStorage';
+import { manageLocalStorage } from '../utils/manageLocalStorage';
 import { getStandardType } from '../utils/getStandardType';
 import * as S from '../styles/ItemCardStyle';
 
@@ -11,7 +11,7 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { product, exhibition, brand } = itemCardTypes;
-  const { addBookmark, deleteBookmark } = updateLocalStorage;
+  const { addBookmark, deleteBookmark } = manageLocalStorage;
   const { title, subTitle, image, price, discount, follower } = getStandardType(data);
   const isBookmarked = bookmarks.has(data.id) ? true : false;
 
