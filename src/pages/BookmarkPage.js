@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
 
 import { itemCardTypes } from '../constants/itemCardTypes';
-import * as S from '../styles/MainPageStyle';
+import * as S from '../styles/BookmarkPageStyle';
 
+import FilterList from '../components/FilterList';
 import ItemCardList from '../components/ItemCardList';
 import { manageLocalStorage } from '../utils/manageLocalStorage';
 
-export default function MainPage () {
+export default function BookmarkPage () {
+  const [ checkedFilter, setCheckedFilter ] = useState(itemCardTypes.all);
+
   const [ bookmarks, setBookmarks ] = useState(
     manageLocalStorage.getBookmarks()
   );
 
   return (
-    <main>
-      <S.Title>상품 리스트</S.Title>
+    <S.Wrapper>
+      <FilterList setCheckedFilter={setCheckedFilter} checkedFilter={checkedFilter} />
       <ItemCardList
-        count={4}
+        count={10}
         bookmarks={bookmarks}
         setBookmarks={setBookmarks}
-        searchType={itemCardTypes.all}
-      />
-      <S.Title>북마크 리스트</S.Title>
-      <ItemCardList
-        count={4}
-        bookmarks={bookmarks}
-        setBookmarks={setBookmarks}
+        searchType={checkedFilter}
         isBookmarkList={true}
       />
-    </main>
-  );
+    </S.Wrapper>
+  )
 }
