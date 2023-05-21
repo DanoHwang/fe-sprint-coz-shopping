@@ -6,7 +6,7 @@ import * as S from '../styles/ProductListPageStyle';
 import FilterList from '../components/FilterList';
 import ItemCardList from '../components/ItemCardList';
 import { manageLocalStorage } from '../utils/manageLocalStorage';
-import { getProducts } from '../utils/getProducts';
+import { getProductsByPage } from '../utils/getProducts';
 
 export default function ProductListPage () {
   const [ checkedFilter, setCheckedFilter ] = useState(itemCardTypes.all);
@@ -18,7 +18,7 @@ export default function ProductListPage () {
   );
 
   const fetchData = async () => {
-    const result = await getProducts(page);
+    const result = await getProductsByPage(page);
 
     setItems((prev) => [ ...prev, ...result ]);
     setPage((prev) => prev + 1);
