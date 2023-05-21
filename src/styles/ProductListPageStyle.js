@@ -6,3 +6,9 @@ export const Wrapper = styled.main`
   justify-content: center;
   align-items: center;
 `;
+
+export const Target = styled.div`
+  width: 100%;
+  height: 200px;
+  background-color: orange;
+`;
