@@ -51,7 +51,7 @@ export default function ProductListPage () {
         setBookmarks={setBookmarks}
         searchType={checkedFilter}
       />
-      <S.Target ref={setTarget}>Target</S.Target>
+      <S.Target ref={setTarget} />
     </S.Wrapper>
   );
 }

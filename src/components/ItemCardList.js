@@ -5,11 +5,10 @@ import * as S from '../styles/ItemCardListStyle';
 
 import ItemCard from '../components/ItemCard';
 
-export default function ItemCardList ({ items, bookmarks, setBookmarks, isBookmarkList = false, searchType = itemCardTypes.all }) {
-  const itemList = isBookmarkList ? [...bookmarks.values()]: items;
+export default function ItemCardList ({ items, bookmarks, setBookmarks, searchType = itemCardTypes.all }) {
   const filteredData = searchType === itemCardTypes.all
-    ? itemList
-    : itemList.filter((data) => data.type === searchType);
+    ? items
+    : items.filter((data) => data.type === searchType);
 
   return (
     <S.Wrapper>

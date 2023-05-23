@@ -16,7 +16,6 @@ export default function MainPage () {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getAllProducts();
-
       setItems(result.slice(0, 4));
     };
 
@@ -34,9 +33,9 @@ export default function MainPage () {
       />
       <S.Title>북마크 리스트</S.Title>
       <ItemCardList
+        items={[...bookmarks.values()].slice(0, 4)}
         bookmarks={bookmarks}
         setBookmarks={setBookmarks}
-        isBookmarkList={true}
       />
     </main>
   );

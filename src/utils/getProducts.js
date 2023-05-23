@@ -27,7 +27,7 @@ export const getProductsByPage = async (page) => {
   const result = await axios.get(urls.allProducts);
 
   if (result.status === 200) {
-    return result.data.slice(page * 16, (page + 1) * 16);
+    return result.data.slice((page - 1) * 16, page * 16);
   }
 
   if (result.status === 400) {
