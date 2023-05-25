@@ -8,6 +8,12 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+  argTypes: {
+    inset: {
+      options: Object.values(insetTypes),
+      control: 'check',
+    }
+  },
 };
 
 const Template = (args) => {

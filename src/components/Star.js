@@ -46,9 +46,7 @@ export const Star = ({ size, inset, gap, isSelected, onClick }) => {
 
 Star.propTypes = {
   size: PropTypes.number,
-  inset: PropTypes.oneOf(['topLeft', 'topRight', 'bottomLeft', 'bottomRight']),
-  // 아래와 같이 작성하면 스토리북 실행 시 inset 속성에 대해 dynamic PropTypes를 반영하지 못하고 있으므로 위와 같이 문자열로 작성함
-  // inset: PropTypes.oneOf([insetTypes.topLeft, insetTypes.topRight, insetTypes.bottomLeft, insetTypes.bottomRight]),
+  inset: PropTypes.oneOf(Object.values(insetTypes)),
   gap: PropTypes.oneOf([12, 24, 32]),
   isSelected: PropTypes.bool,
   onClick: PropTypes.func,
