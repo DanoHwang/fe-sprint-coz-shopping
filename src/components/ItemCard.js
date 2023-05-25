@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { itemCardTypes } from '../constants/itemCardTypes';
 import { manageLocalStorage } from '../utils/manageLocalStorage';
 import { getStandardType } from '../utils/getStandardType';
+import { insetTypes } from '../constants/insetTypes';
 import * as S from '../styles/ItemCardStyle';
 
 import Modal from './Modal';
+import { Star } from './Star';
 
 export default function ItemCard ({ data, bookmarks, setBookmarks }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +31,7 @@ export default function ItemCard ({ data, bookmarks, setBookmarks }) {
     <S.Container>
       <S.ImgWrapper>
         <S.ProductImage src={data['image_url']} onClick={openModalHandler} />
-        <S.Star selected={isBookmarked ? true : false} onClick={handleBookmark} />
+        <Star size={24} inset={insetTypes.bottomRight} gap={12} isSelected={isBookmarked} onClick={handleBookmark} />
       </S.ImgWrapper>
       <S.Wrapper>
         <S.Title>{title}</S.Title>

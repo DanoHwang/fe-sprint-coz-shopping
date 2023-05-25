@@ -44,18 +44,6 @@ export const ModalButton = styled.img`
   cursor: pointer;
 `;
 
-export const ModalStar = styled.img.attrs(props => ({
-  src: `${props.selected ? yellowStarImg : blankStarImg}`,
-  alt: ''
-}))`
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  left: 32px;
-  bottom: 32px;
-  cursor: pointer;
-`;
-
 export const ModalTitle = styled.h2`
   position: absolute;
   left: 68px;
