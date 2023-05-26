@@ -11,7 +11,7 @@ export default {
   argTypes: {
     inset: {
       options: Object.values(insetTypes),
-      control: 'check',
+      control: 'radio',
     }
   },
 };
