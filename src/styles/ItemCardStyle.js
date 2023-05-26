@@ -39,15 +39,3 @@ export const Title = styled.h2`
   font-size: 16px;
   color: ${props => props.type === itemCardTypes.product ? '#452CDD' : '#000'};
 `;
-
-export const Star = styled.img.attrs(props => ({
-  src: `${props.selected ? yellowStarImg : blankStarImg}`,
-  alt: ''
-}))`
-  width: 24px;
-  height: 24px;
-  right: 12px;
-  bottom: 12px;
-  position: absolute;
-  cursor: pointer;
-`;
