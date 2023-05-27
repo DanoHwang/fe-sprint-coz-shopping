@@ -1,7 +1,5 @@
 import { styled } from 'styled-components';
 
-import blankStarImg from '../assets/blank-star.svg';
-import yellowStarImg from '../assets/yellow-star.svg';
 import { itemCardTypes } from '../constants/itemCardTypes';
 
 export const Container = styled.div`

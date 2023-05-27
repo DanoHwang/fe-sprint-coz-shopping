@@ -1,8 +1,5 @@
 import { styled } from 'styled-components';
 
-import blankStarImg from '../assets/blank-star.svg';
-import yellowStarImg from '../assets/yellow-star.svg';
-
 export const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
@@ -28,9 +25,10 @@ export const ModalView = styled.div`
   background-color: #FFFF;
 `;
 
-export const ModalImage = styled.div`
+export const ModalImage = styled.img`
   width: 100%;
   height: 100%;
+  border-radius: 1rem;
 `;
 
 export const ModalButton = styled.img`
